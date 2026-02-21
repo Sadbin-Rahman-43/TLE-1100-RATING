@@ -1,0 +1,29 @@
+# VS Code settings and workspace files
+.vscode/
+
+# Compiled executables
+*.exe
+*.out
+*.o
+*.obj
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+
+# macOS specific
+.DS_Store
+
+# Linux specific
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Input/output test files (optional - uncomment if you want to ignore them)
+# *.in
+# *.out
+# *.ans
