@@ -45,6 +45,7 @@ static constexpr double EPS = 1e-10;    // Floating point comparison tolerance
 #define sb(v) sort(all(v))                 // Sort ascending
 #define bs(v) sort(rall(v))                // Sort descending
 #define rs(v) reverse(all(v))              // Reverse vector
+#define isPowerOfTwo(n) (n > 0 && ((n & (n - 1)) == 0))
 // Remove duplicates
 #define uniq(v)   \
     sort(all(v)); \
@@ -184,39 +185,47 @@ unordered_map<T, int> count_freq_unordered(const vector<T> &arr)
 }
 void solve()
 {
-    ll n, c;
-    cin >> n >> c;
+
+    int n;
+    cin >> n;
     vl v(n);
     readvec(v);
-    ll l = 1, r = 1e9, ans = -1;
-    while (l <= r)
+    sb(v);
+    for (int i = 0; i < n - 1; i++)
     {
-        ll mid = l + (r - l) / 2;
-        ll sum = 0;
-        for (ll i = 0; i < n; i++)
+        ll a = abs(v[i]);
+        ll b = abs(v[i + 1]);
+        if (v[i] < 0 && v[i + 1] < 0)
         {
 
-            sum += (v[i] + 2 * mid) * (v[i] + 2 * mid);
-            if (sum > c)
-                break;
+            v[i] = a;
+            v[i + 1] = b;
         }
-        if (sum <= c)
+        else if (v[i] < 0 && a > b)
         {
-            ans = mid;
-            l = mid + 1;
-        }
-        else
-            r = mid - 1;
 
+            v[i] = a;
+            v[i + 1] *= -1;
+        }
     }
-    cout << ans << endl;
+    ll a = abs(v[n - 1]);
+    ll b = abs(v[n - 2]);
+    if (v[n - 1] < 0 && a > b)
+    {
+
+        v[n - 1] =a;
+        v[n - 2] *= -1;
+    }
+    ll sum = accumulate(all(v), 0ll);
+    cout << sum << endl;
 }
 
 int main()
 {
     fastio;
-    int t = 1;
+    int t;
     cin >> t;
-    rep(i, 0, t) solve();
+    rep(i, 0, t)
+        solve();
     return 0;
 }
