@@ -194,8 +194,8 @@ void solve()
         cin >> x;
         m[x] = i;
     }
-    each(x, m)
-    cout<<x.ff  <<" "<<x.ss<<endl;
+    //each(x, m)
+    //cout<<x.ff  <<" "<<x.ss<<endl;
     int mx = -1;
     each(x, m)
     {
